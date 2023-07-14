@@ -1,6 +1,3 @@
-import matplotlib
-matplotlib.use('Agg')
-
 import os
 import wandb
 import logging
@@ -40,10 +37,7 @@ config = initialize_wandb(
 )
 
 #config.update({'data.datamodule.arguments.root_dir':f"{config['prefix']}/{config['root_dir_base']}/{config['experiment.seed']}"},allow_val_change=True) 
-config.update({'data.datamodule.arguments.root_dir':f"{config['prefix']}/{config['root_dir_base']}"},allow_val_change=True) 
-if 'patched' in config['data.datamodule.arguments.root_dir']:
-    config.update({'data.img_processing.img_size':[1200,1200]},allow_val_change=True)
-    config.update({'train.trainer.max_epochs':240},allow_val_change=True)
+config.update({'data.datamodule.arguments.root_dir':f"{config['prefix']}/{config['root_dir_base']}/{config['experiment.seed']}"},allow_val_change=True) 
 
 
 logging.info(f'Root dir: {config["data.datamodule.arguments.root_dir"]}')
